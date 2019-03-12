@@ -16,28 +16,6 @@ window.onload = function () {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //==================================================
 
     //SHOPPING CART 
@@ -62,6 +40,10 @@ window.onload = function () {
     //SHOPPING CART END
     //=========================================================
 }
+
+//ISPIS NAV MENIJA
+
+//Ispis donjeg menija
 
 function showNavMenu(){
     $.ajax({
@@ -101,7 +83,6 @@ function showCategories(){
             printCategories(categories);
         },
         error: function(err){
-            console.log('milena');
             alert(err);
         }
     })
@@ -127,12 +108,7 @@ function printSingleCategory(category){
             </a>
         </h4>
         </div>
-        
-
     `;
-    //${printCollapseDdl(category.collapse.collapseTorF)}
-    //klikom na this se poziva fja printCollapseDdl -- click()
-    //$().toggle()
 }
 
 // FILTRIRANJE PO KATEGORIJI

@@ -1,0 +1,72 @@
+[
+    {
+        "href": "#",
+        "fafaClass": "fa fa-user",
+        "text": "Account",
+        "classActive": "",
+        "id": {
+            "bool": false,
+            "text": ""
+        },
+        "itemcount": {
+            "bool": false,
+            "text": ""
+        }
+    },
+    {
+        "href": "#",
+        "fafaClass": "fa fa-star",
+        "text": "Wishlist",
+        "classActive": "",
+        "id": {
+            "bool": false,
+            "text": ""
+        },
+        "itemcount": {
+            "bool": false,
+            "text": ""
+        }
+    },
+    {
+        "href": "#",
+        "fafaClass": "fa fa-crosshairs",
+        "text": "Checkout",
+        "classActive": "",
+        "id": {
+            "bool": false,
+            "text": ""
+        },
+        "itemcount": {
+            "bool": false,
+            "text": ""
+        }
+    },
+    {
+        "href": "#",
+        "fafaClass": "fa fa-shopping-cart",
+        "text": "Cart",
+        "classActive": "",
+        "id": {
+            "bool": true,
+            "text": "cart-info"
+        },
+        "itemcount": {
+            "bool": true,
+            "text": 2
+        }
+    },
+    {
+        "href": "login.html",
+        "fafaClass": "fa fa-lock",
+        "text": "Login",
+        "classActive": "active",
+        "id": {
+            "bool": false,
+            "text": ""
+        },
+        "itemcount": {
+            "bool": false,
+            "text": ""
+        }
+    }
+]
