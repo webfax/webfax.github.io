@@ -23,6 +23,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 
+
 </head><!--/head-->
 
 <body>
@@ -394,7 +395,7 @@
 						<td></td>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody class="cart-items">
 					<tr class="cart-row">
 						<td class="cart_product">
 							<a href=""><img src="images/cart/one.png" alt=""></a>
@@ -408,7 +409,7 @@
 						</td>
 						<td class="cart_quantity">
 							<div class="cart_quantity_button">
-								<input class="cart_quantity_input" type="text" name="quantity" value="1" size="2">
+								<input class="cart_quantity_input" type="number" name="quantity" value="1" size="2">
 							</div>
 						</td>
 						<!--
@@ -434,7 +435,7 @@
 						</td>
 						<td class="cart_quantity">
 							<div class="cart_quantity_button">
-								<input class="cart_quantity_input" type="text" name="quantity" value="2" autocomplete="off" size="2">
+								<input class="cart_quantity_input" type="number" name="quantity" value="2" autocomplete="off" size="2">
 							</div>
 						</td>
 						<!--
@@ -459,7 +460,7 @@
 						</td>
 						<td class="cart_quantity">
 							<div class="cart_quantity_button">
-								<input class="cart_quantity_input" type="text" name="quantity" value="3" autocomplete="off" size="2">
+								<input class="cart_quantity_input" type="number" name="quantity" value="3" autocomplete="off" size="2">
 							</div>
 						</td>
 						<!--
@@ -478,7 +479,7 @@
 		<div class="cart-total">
 			<strong class="cart-total-title">Total:</strong>
 			<span class="cart-total-price">$0</span>
-			<button>Close</button>
+			<button class="closeBtn">Close</button>
 		</div>
 	</div>
 	<!--aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-->
@@ -488,7 +489,9 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.scrollUp.min.js"></script>
 	<script src="js/price-range.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
+	<script src="js/jquery.prettyPhoto.js"></script>
+
 	<script src="js/myMain.js"></script>
+
 </body>
 </html>

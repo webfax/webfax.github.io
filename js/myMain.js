@@ -9,37 +9,19 @@ window.onload = function () {
     $(".sort-element").click(onSortProducts);
 
 
+   
+       //......................
 
-
-
-
-
-
-
-    //==================================================
-
-    //SHOPPING CART 
-    var removeCartItemButtons = document.getElementsByClassName('cart_quantity_delete');
-    for(let i = 0; i < removeCartItemButtons.length; i++){
-        var removeCross = removeCartItemButtons[i];
-        removeCross.addEventListener('click', removeCartItem);
-    }
-
-    var quantityInputs = document.getElementsByClassName('cart_quantity_input');
-    for(let i = 0; i < quantityInputs.length; i++){
-        var input = quantityInputs[i];
-        input.addEventListener('change', quantityChanged);
-    }
-
-    //var addToCartButtons = document.getElementsByClassName('')
-
-
-    //......................
-    toggleCart();
-    //......................
-    //SHOPPING CART END
-    //=========================================================
 }
+
+
+//SHOPPING CART END
+if(document.readyState == 'loading'){
+    document.addEventListener('DOMContentLoaded', ready);
+} else{
+    ready();
+}
+//======================================================
 
 //ISPIS NAV MENIJA
 
@@ -212,7 +194,7 @@ function printProducts(product){
                     <div class="productinfo text-center">
                         <img src="${element.picture.src}" alt="${element.picture.alt}" />
                         <h2>$${element.price}</h2>
-                        <p>${element.name}</p>
+                        <p class="shop-item-title">${element.name}</p>
                         <p>${element.description}</p>
                         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                     </div>
@@ -350,55 +332,69 @@ function ajaxProducts(callbackSuccess){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//======================================================
-
+//==========================================
 //SHOPPING CART 
 
+function ready(){
+    var removeCartItemButtons = document.getElementsByClassName('cart_quantity_delete');
+    for(let i = 0; i < removeCartItemButtons.length; i++){
+        var removeCross = removeCartItemButtons[i];
+        removeCross.addEventListener('click', removeCartItem);
+    }
+
+    var quantityInputs = document.getElementsByClassName('cart_quantity_input');
+    for(let i = 0; i < quantityInputs.length; i++){
+        var inputs = quantityInputs[i];
+        inputs.addEventListener('change', qunatityChanged)
+    }
+
+    var addToCartButtons = document.getElementsByClassName('add-to-cart');
+    for(let i = 0; i < addToCartButtons.length; i++){
+        var button = addToCartButtons[i];
+        button.addEventListener('click', addToCartClicked);
+    }
+    
+    toggleCart(); 
+    closeCartBtnClicked();
+
+}
+
+function qunatityChanged(event){
+    var input = event.target;
+    if(isNaN(input.value) || input.value <= 0){
+        input.value = 1;
+    }
+    updateCartTotal();
+}
+
+function removeCartItem(event){
+    var buttonClicked = event.target;
+    buttonClicked.parentElement.parentElement.remove();
+    updateCartTotal();
+}
+
+function addToCartClicked(event){
+    event.preventDefault();
+    var button = event.target;
+    var shopItem = button.parentElement;
+    var title = shopItem.getElementsByClassName('shop-item-title')[0].innerText;
+}//OVDE SAM STAO!!!!!!!!!
+
+function updateCartTotal(){
+    var cartItemContainer = document.getElementsByClassName('cart-items')[0];
+    var cartRows = cartItemContainer.getElementsByClassName('cart-row');
+    var total = 0;
+    for(let i = 0; i < cartRows.length; i++){
+        cartRow = cartRows[i];
+        var priceElement = cartRow.getElementsByClassName('cart-price')[0];
+        var quantityElement = cartRow.getElementsByClassName('cart_quantity_input')[0];
+        var price = parseFloat(priceElement.innerText.replace('$', ''));
+        var quantity = quantityElement.value;
+        total = total + (price * quantity);
+    }
+    total = Math.round(total * 100) / 100;
+    document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total;
+}
 //toggle cart
 function toggleCart(){
         const cartInfo = document.getElementById('cart-info');
@@ -408,35 +404,13 @@ function toggleCart(){
     });
 }
 
-function updateCartTotal(){
-    let cartItemContainer = document.getElementsByClassName('cart-items')[0];
-    let cartRows = cartItemContainer.getElementsByClassName('cart-row');
-    let total = 0;
-    for(let i = 0; i < cartRows.length; i++){
-        let cartRow = cartRows[i];
-        let priceElement = cartRow.getElementsByClassName('cart-price')[0];
-        let quantityElement = cartRow.getElementsByClassName('cart_quantity_input')[0];
-        let price = parseFloat(priceElement.innerText.replace('$', ''));
-        let quantity = quantityElement.value;
-        total = total+(price * quantity);
-    }
-    
-    document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total;
-
+function closeCartBtnClicked(){
+    console.log('Clicked close cart');
+    var wholeCart = document.getElementById("cart");
+    var closeBtn = document.getElementsByClassName('closeBtn')[0];
+    closeBtn.addEventListener('click', function(){
+        wholeCart.setAttribute('class', 'hiddenCart');
+    })
 }
+//OVDE JE TOTAL END ZA CART 
 
-function removeCartItem(event){
-    var buttonClicked = event.target;
-    buttonClicked.parentElement.parentElement.remove();
-    updateCartTotal();
-}
-
-function quantityChanged(event){
-    var input = event.target;
-    if(isNaN(input.value) || input.value <= 0){
-        input.value = 1;
-    }
-    updateCartTotal();
-}
-
-//SHOPPING CART END
