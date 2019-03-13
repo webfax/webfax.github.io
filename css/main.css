@@ -2570,22 +2570,6 @@ h2.title {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*cart*/
 
 .hiddenCart {
@@ -2594,7 +2578,7 @@ h2.title {
   top: 0;
   right: 0;
   transition: all 0.3s ease-in-out;
-  background: rgba(240, 177, 42, 0.911);
+  background: rgba(255, 255, 255, 1);
   width: 0;
   overflow: hidden;
 }
@@ -2617,5 +2601,46 @@ h2.title {
   font-size: 15px;
 }
 
+.table thead{
+  background-color: rgba(240, 177, 42, 0.911);
+}
+
+.table thead tr td{
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.cart_info{
+  border: 1px solid rgb(172, 172, 172);
+}
+
+.table thead{
+  border: 1px solid white;
+}
+.table tbody tr{
+  border-bottom: 1px solid rgb(243, 240, 233);
+}
+.table tbody tr:last-child{
+  border-bottom: none;
+}
+
+.cart-total{
+  font-size: 18px;
+  padding: 20px;
+  border-bottom: 2px solid rgb(172, 172, 172);
+}
+.cart-total button{
+  float: right;
+  border: none;
+  background-color: rgba(240, 177, 42, 0.911);
+  border-radius: 10ch;
+}
+
+.cart_delete button{
+  border: none;
+  color: rgba(240, 177, 42, 0.911);
+  background-color: white;
+}
 
 
