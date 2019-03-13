@@ -353,7 +353,7 @@ function ready(){
         var button = addToCartButtons[i];
         button.addEventListener('click', addToCartClicked);
     }
-    
+
     toggleCart(); 
     closeCartBtnClicked();
 
@@ -378,7 +378,7 @@ function addToCartClicked(event){
     var button = event.target;
     var shopItem = button.parentElement;
     var title = shopItem.getElementsByClassName('shop-item-title')[0].innerText;
-}//OVDE SAM STAO!!!!!!!!!
+}//OVDE SAM STAO!
 
 function updateCartTotal(){
     var cartItemContainer = document.getElementsByClassName('cart-items')[0];
