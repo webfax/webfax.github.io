@@ -2552,7 +2552,22 @@ h2.title {
   width: 100%; 
 }
 
+/*Author*/
 
+
+#author_content img{  
+  float: left;
+  margin: 0px 30px 30px 30px;
+  border-radius: 999em;
+	border: 10px solid #fe980f;
+	background: #000;
+}
+
+#personal_info{
+  padding: 20px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 17px;
+}
 
 
 
