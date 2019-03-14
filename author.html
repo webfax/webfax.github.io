@@ -13,6 +13,7 @@
     <link href="css/animate.css" rel="stylesheet">
 	<link href="css/main.css" rel="stylesheet">
 	<link href="css/responsive.css" rel="stylesheet">
+	<link rel='shortcut icon' type='image/x-icon' href='images/favicon-x-icon/favicon.png' />
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -26,6 +27,7 @@
 </head><!--/head-->
 
 <body>
+	<button id="myBtn" title="Go to top">Top</button>
 	<header id="header"><!--header-->
 		<div class="header_top"><!--header_top-->
 			<div class="container">
@@ -41,11 +43,11 @@
 					<div class="col-sm-6">
 						<div class="social-icons pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+								<li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="https://rs.linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
+								<li><a href="https://dribbble.com/"><i class="fa fa-dribbble"></i></a></li>
+								<li><a href="https://plus.google.com/discover"><i class="fa fa-google-plus"></i></a></li>
 							</ul>
 						</div>
 					</div>
@@ -67,12 +69,6 @@
 							<ul class="nav navbar-nav">
 								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
 								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li id="cart-info">
-									<a href="#"><i class="fa fa-shopping-cart"></i> Cart</a>
-									<span id="item-count">2</span>
-								</li>
-								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
 							</ul>
 						</div>
 					</div>
@@ -229,11 +225,11 @@
 						<div class="single-widget">
 							<h2>Quock Shop</h2>
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">T-Shirt</a></li>
-								<li><a href="#">Mens</a></li>
-								<li><a href="#">Womens</a></li>
-								<li><a href="#">Gift Cards</a></li>
-								<li><a href="#">Shoes</a></li>
+								<li><a href="#">Gaming PC-s</a></li>
+								<li><a href="#">Gaming Mouses</a></li>
+								<li><a href="#">Gaming Monitors</a></li>
+								<li><a href="#">Laptops</a></li>
+								<li><a href="#">Headphones</a></li>
 							</ul>
 						</div>
 					</div>
@@ -287,120 +283,13 @@
 		</div>
 		
 	</footer><!--/Footer-->
-	<!--AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->
-	<div id="cart" class="hiddenCart">
-			<div class="table-responsive cart_info">
-			<table class="table table-condensed">
-				<thead>
-					<tr class="cart_menu">
-						<td class="image">Item</td>
-						<td class="description"></td>
-						<td class="price">Price</td>
-						<td class="quantity">Quantity</td>
-						<td class="total"></td>
-						<td></td>
-					</tr>
-				</thead>
-				<tbody>
-					<tr class="cart-row">
-						<td class="cart_product">
-							<a href=""><img src="images/cart/one.png" alt=""></a>
-						</td>
-						<td class="cart_description">
-							<h4><a href="">Colorblock Scuba</a></h4>
-							<p>Web ID: 1089772</p>
-						</td>
-						<td class="cart_price">
-							<p class="cart-price">$59</p>
-						</td>
-						<td class="cart_quantity">
-							<div class="cart_quantity_button">
-								<a class="cart_quantity_up" href=""> + </a>
-								<input class="cart_quantity_input" type="text" name="quantity" value="1" size="2">
-								<a class="cart_quantity_down" href=""> - </a>
-							</div>
-						</td>
-						<!--
-						<td class="cart_total">
-							<p class="cart_total_price">$59</p>
-						</td>
-						-->
-						<td class="cart_delete">
-							<button class="cart_quantity_delete fa fa-times"></button>
-						</td>
-					</tr>
-
-					<tr class="cart-row">
-						<td class="cart_product">
-							<a href=""><img src="images/cart/two.png" alt=""></a>
-						</td>
-						<td class="cart_description">
-							<h4><a href="">Colorblock Scuba</a></h4>
-							<p>Web ID: 1089772</p>
-						</td>
-						<td class="cart_price">
-							<p class="cart-price">$69</p>
-						</td>
-						<td class="cart_quantity">
-							<div class="cart_quantity_button">
-								<a class="cart_quantity_up" href=""> + </a>
-								<input class="cart_quantity_input" type="text" name="quantity" value="2" autocomplete="off" size="2">
-								<a class="cart_quantity_down" href=""> - </a>
-							</div>
-						</td>
-						<!--
-						<td class="cart_total">
-							<p class="cart_total_price">$59</p>
-						</td>
-						-->
-						<td class="cart_delete">
-							<button class="cart_quantity_delete fa fa-times"></button>
-						</td>
-					</tr>
-					<tr class="cart-row">
-						<td class="cart_product">
-							<a href=""><img src="images/cart/three.png" alt=""></a>
-						</td>
-						<td class="cart_description">
-							<h4><a href="">Colorblock Scuba</a></h4>
-							<p>Web ID: 1089772</p>
-						</td>
-						<td class="cart_price">
-							<p class="cart-price">$79</p>
-						</td>
-						<td class="cart_quantity">
-							<div class="cart_quantity_button">
-								<a class="cart_quantity_up" href=""> + </a>
-								<input class="cart_quantity_input" type="text" name="quantity" value="3" autocomplete="off" size="2">
-								<a class="cart_quantity_down" href=""> - </a>
-							</div>
-						</td>
-						<!--
-						<td class="cart_total">
-							<p class="cart_total_price">$59</p>
-						</td>
-						-->
-						<td class="cart_delete">
-							<button class="cart_quantity_delete fa fa-times"></button>
-						</td>
-						<!--<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>-->
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<div class="cart-total">
-			<strong class="cart-total-title">Total:</strong>
-			<span class="cart-total-price">$0</span>
-		</div>
-	</div>
-	<!--aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-->
+	
 	
 	<script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.scrollUp.min.js"></script>
 	<script src="js/price-range.js"></script>
     <script src="js/jquery.prettyPhoto.js"></script>
-	<script src="js/myMain.js"></script>
+	<script type="text/javascript" src="js/myMain.js"></script>
 </body>
 </html>

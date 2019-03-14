@@ -8,24 +8,35 @@ window.onload = function () {
 
     $(".sort-element").click(onSortProducts);
 
+    //Contact form 
+    var getButton = document.getElementById('btnSend');
+    if(getButton){
+        getButton.addEventListener('click', formCheck);
+    }
 
-   
-       //......................
-
+    //Scroll to top button jQuery
+    $(window).scroll(function(){
+        if ($(this).scrollTop() > 50) {
+            $('#myBtn').fadeIn('slow');
+        } else {
+            $('#myBtn').fadeOut('slow');
+        }
+    });
+    $('#myBtn').click(function(){
+        $("html, body").animate({ scrollTop: 0 }, 500);
+        return false;
+    });
+    
+    
 }
 
-
-//SHOPPING CART END
 if(document.readyState == 'loading'){
     document.addEventListener('DOMContentLoaded', ready);
 } else{
     ready();
 }
-//======================================================
 
 //ISPIS NAV MENIJA
-
-//Ispis donjeg menija
 
 function showNavMenu(){
     $.ajax({
@@ -160,25 +171,10 @@ function printSingleBrand(brand){
 //Ispis proizvoda
 
 function showProducts(){
-    //$.ajax({
-    //    url: "data/products.json",
-    //    method: "get",
-    //    dataType: "json",
-    //    success: function(products){
-    //        printProducts(products);
-    //    },
-    //    error: function(){
-
-    //    }
-    //});
     ajaxProducts(
         function(products){
-            // iz localStorage -> ako je postojala selekcija ranije, da se po tome sortira pri ucitavanju strane
             sortFilterByRemembered(products);
             printProducts(products);
-
-            // Ovde moramo pozvati za prikaz boja, jer prikaz boja zavisi od JSON-a "produsts", odatle se iscitavaju boje
-            //showColors(products);
         }
     );
 }
@@ -269,7 +265,6 @@ function onSortProducts(e){
 
     let sortBy = $(this).data('sortby'); 
     let order = $(this).data('order');
-    console.log(sortBy + "=" + order);
     rememberSort(sortBy, order);
 
     ajaxProducts(function(products){
@@ -293,8 +288,6 @@ function inArray(array, element){
     return array.indexOf(element)!==-1;
 }
 
-
-// LOCAL STORAGE PAMCENJE STA JE KORISNIK IZABRAO ZA FILTER I SORT
 function sortFilterByRemembered(products){
     if(!isEmptyStorage()){
         let selection = getStorage();
@@ -330,9 +323,6 @@ function ajaxProducts(callbackSuccess){
     });
 }
 
-
-
-//==========================================
 //SHOPPING CART 
 
 function ready(){
@@ -346,12 +336,6 @@ function ready(){
     for(let i = 0; i < quantityInputs.length; i++){
         var inputs = quantityInputs[i];
         inputs.addEventListener('change', qunatityChanged)
-    }
-
-    var addToCartButtons = document.getElementsByClassName('add-to-cart');
-    for(let i = 0; i < addToCartButtons.length; i++){
-        var button = addToCartButtons[i];
-        button.addEventListener('click', addToCartClicked);
     }
 
     toggleCart(); 
@@ -373,13 +357,6 @@ function removeCartItem(event){
     updateCartTotal();
 }
 
-function addToCartClicked(event){
-    event.preventDefault();
-    var button = event.target;
-    var shopItem = button.parentElement;
-    var title = shopItem.getElementsByClassName('shop-item-title')[0].innerText;
-}//OVDE SAM STAO!
-
 function updateCartTotal(){
     var cartItemContainer = document.getElementsByClassName('cart-items')[0];
     var cartRows = cartItemContainer.getElementsByClassName('cart-row');
@@ -395,6 +372,7 @@ function updateCartTotal(){
     total = Math.round(total * 100) / 100;
     document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total;
 }
+
 //toggle cart
 function toggleCart(){
         const cartInfo = document.getElementById('cart-info');
@@ -405,12 +383,57 @@ function toggleCart(){
 }
 
 function closeCartBtnClicked(){
-    console.log('Clicked close cart');
     var wholeCart = document.getElementById("cart");
     var closeBtn = document.getElementsByClassName('closeBtn')[0];
     closeBtn.addEventListener('click', function(){
         wholeCart.setAttribute('class', 'hiddenCart');
     })
+} 
+
+//Contact form validate
+
+function formCheck(){
+    //Name check
+    var validateName = /^[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{1,20}$/;
+    var getName = document.querySelector('#cName');
+
+    if(!validateName.test(getName.value)){
+        getName.style.borderColor = "red";
+    }else{
+        getName.style.borderColor = "green";
+    }
+
+    //Email check
+    var validateEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var getEmail = document.querySelector('#cEmail');
+
+    if(!validateEmail.test(getEmail.value)){
+        getEmail.style.borderColor = "red";
+    }else{
+        getEmail.style.borderColor = "green";
+    }
+
+    //Subject check
+    var validateSubject = /^[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{1,20}$/;
+    var getSubject = document.querySelector('#cSubject');
+
+    if(!validateSubject.test(getSubject.value)){
+        getSubject.style.borderColor = "red";
+    }else{
+        getSubject.style.borderColor = "green";
+    }
+
+    validateEmptytextBox();
 }
-//OVDE JE TOTAL END ZA CART 
+//Textarea check
+function validateEmptytextBox() {
+    var getMessagefield = document.getElementById("message");
+    var getMessage = document.getElementById("message").value;
+    getMessage = getMessage.replace(/^\s+/, '').replace(/\s+$/, '');
+    if(getMessage == ""){
+        getMessagefield.style.borderColor = "red";
+    }else{ 
+        getMessagefield.style.borderColor = "green";
+    }
+}
 
