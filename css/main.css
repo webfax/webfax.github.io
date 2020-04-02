@@ -2631,7 +2631,7 @@ h2.title {
   border-bottom: 2px solid rgb(172, 172, 172);
 }
 .cart-total button{
-  float: right;
+  /* float: left; */
   border: none;
   background-color: rgba(240, 177, 42, 0.911);
   border-radius: 10ch;

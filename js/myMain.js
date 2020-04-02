@@ -192,13 +192,13 @@ function printProducts(product){
                         <h2>$${element.price}</h2>
                         <p class="shop-item-title">${element.name}</p>
                         <p>${element.description}</p>
-                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                        <input type="button" data-id=${element.id} value="Add to cart" class="btn btn-default add-to-cart" />
                     </div>
                     <div class="product-overlay">
                         <div class="overlay-content">
                             <h2>$${element.price}</h2>
                             <p>${element.name}</p>
-                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                            <input type="button" data-id=${element.id} value="Add to cart" class="btn btn-default add-to-cart" />
                         </div>
                     </div>
                     <div class="fafa-stars">
@@ -217,6 +217,7 @@ function printProducts(product){
         `;
     });
     $('.features_items').html(html);
+    addToCartEL();
 }
 
 function printStars(star){
@@ -343,13 +344,13 @@ function ready(){
 
 }
 
-function qunatityChanged(event){
-    var input = event.target;
-    if(isNaN(input.value) || input.value <= 0){
-        input.value = 1;
-    }
-    updateCartTotal();
-}
+// function qunatityChanged(event){
+//     var input = event.target;
+//     if(isNaN(input.value) || input.value <= 0){
+//         input.value = 1;
+//     }
+//     updateCartTotal();
+// }
 
 function removeCartItem(event){
     var buttonClicked = event.target;
@@ -357,21 +358,21 @@ function removeCartItem(event){
     updateCartTotal();
 }
 
-function updateCartTotal(){
-    var cartItemContainer = document.getElementsByClassName('cart-items')[0];
-    var cartRows = cartItemContainer.getElementsByClassName('cart-row');
-    var total = 0;
-    for(let i = 0; i < cartRows.length; i++){
-        cartRow = cartRows[i];
-        var priceElement = cartRow.getElementsByClassName('cart-price')[0];
-        var quantityElement = cartRow.getElementsByClassName('cart_quantity_input')[0];
-        var price = parseFloat(priceElement.innerText.replace('$', ''));
-        var quantity = quantityElement.value;
-        total = total + (price * quantity);
-    }
-    total = Math.round(total * 100) / 100;
-    document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total;
-}
+// function updateCartTotal(){
+//     var cartItemContainer = document.getElementsByClassName('cart-items')[0];
+//     var cartRows = cartItemContainer.getElementsByClassName('cart-row');
+//     var total = 0;
+//     for(let i = 0; i < cartRows.length; i++){
+//         cartRow = cartRows[i];
+//         var priceElement = cartRow.getElementsByClassName('cart-price')[0];
+//         var quantityElement = cartRow.getElementsByClassName('cart_quantity_input')[0];
+//         var price = parseFloat(priceElement.innerText.replace('$', ''));
+//         var quantity = quantityElement.value;
+//         total = total + (price * quantity);
+//     }
+//     total = Math.round(total * 100) / 100;
+//     document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total;
+// }
 
 //toggle cart
 function toggleCart(){
@@ -389,6 +390,54 @@ function closeCartBtnClicked(){
         wholeCart.setAttribute('class', 'hiddenCart');
     })
 } 
+
+//AddToCart
+function addToCartEL() {
+    $(".add-to-cart").click(dodajUKorpu);
+}
+
+function proizvodiUKorpi() {
+    return JSON.parse(localStorage.getItem("proizvodi"));
+}
+
+function dodajUKorpu() {
+    let proizvodi = proizvodiUKorpi();
+    let id = $(this).data('id');
+
+    if(proizvodi) {
+        if(vecPostoji()) {
+            let proizvodi = proizvodiukorpi();
+            for(let i in proizvodi) {
+                if(proizvodi[i].id == id) {
+                    proizvodi[i].quantity++;
+                    break;
+                }
+            }
+            localStorage.setItem("proizvodi", JSON.stringify(proizvodi));
+        }
+        else {
+            let proizvodi = proizvodiukorpi();
+            proizvodi.push({
+                id: id,
+                quantity: 1
+            })
+            localStorage.setItem("proizvodi", JSON.stringify(proizvodi));
+        }
+    } 
+    else {
+        let proizvodi = [];
+        proizvodi[0] = {
+            id: id, 
+            quantity: 1
+        }
+        localStorage.setItem("proizvodi", JSON.stringify(proizvodi));
+    }
+
+    function vecPostoji() {
+        return proizvodi.filter(p => p.id == id).length;
+    }
+}
+
 
 //Contact form validate
 
@@ -436,4 +485,5 @@ function validateEmptytextBox() {
         getMessagefield.style.borderColor = "green";
     }
 }
+
 
